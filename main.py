@@ -558,9 +558,11 @@ def mrz_lines():
     birth = "900614"
     expiry = "340311"
     personal = "<" * 14
-    body = (doc + mrz_check(doc) + "VAL" + birth + mrz_check(birth) + "F"
-            + expiry + mrz_check(expiry) + personal
-            + mrz_check(personal))
+    line2 = (doc + mrz_check(doc) + "VAL" + birth + mrz_check(birth) + "F"
+             + expiry + mrz_check(expiry) + personal
+             + mrz_check(personal))
+    body = doc + mrz_check(doc) + "VAL" + birth + mrz_check(birth) + "F" \
+        + expiry + mrz_check(expiry) + personal + mrz_check(personal)
     line2 = body + mrz_check(body)
     assert len(line1) == 44 and len(line2) == 44
     return line1, line2
